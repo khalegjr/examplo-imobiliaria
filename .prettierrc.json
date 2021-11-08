@@ -1,0 +1,45 @@
+{
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": true,
+    "bracketSameLine": true,
+    "overrides": [
+        {
+            "files": "*.test.js",
+            "options": {
+                "semi": true
+            }
+        },
+        {
+            "files": ["*.html", "legacy/**/*.js"],
+            "options": {
+                "tabWidth": 4
+            }
+        },
+        {
+            "files": "*.js",
+            "options": {
+                "parser": "babel-flow"
+            }
+        },
+        {
+            "files": "*.css",
+            "options": {
+                "parser": "css"
+            }
+        },
+        {
+            "files": "*.json",
+            "options": {
+                "parser": "json"
+            }
+        },
+        {
+            "files": "*.php",
+            "options": {
+                "parser": "php"
+            }
+        }
+    ]
+}
