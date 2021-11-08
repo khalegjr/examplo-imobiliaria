@@ -11,8 +11,13 @@
     },
     "devDependencies": {
         "axios": "^0.21",
+        "eslint-config-prettier": "^8.3.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "prettier": "^2.4.1"
+    },
+    "dependencies": {
+        "@prettier/plugin-php": "^0.17.6"
     }
 }
