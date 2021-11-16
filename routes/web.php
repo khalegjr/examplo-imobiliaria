@@ -16,9 +16,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'admin/cidades', 302);
 
-Route::prefix('admin')->group(function () {
-    Route::prefix('cidades')->group(function () {
-        Route::get('/', [CidadeController::class, 'index']);
-        Route::get('/adicionar', [CidadeController::class, 'create']);
+Route::prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::prefix('cidades')
+            ->name('cidades.')
+            ->group(function () {
+                Route::get('/', [CidadeController::class, 'index'])->name(
+                    'index'
+                );
+                Route::get('/adicionar', [
+                    CidadeController::class,
+                    'create',
+                ])->name('create');
+            });
     });
-});
