@@ -15,4 +15,9 @@ class CidadeController extends Controller
 
         return view('Admin.Cidade.index')->with('cidades', $cidades);
     }
+
+    public function create()
+    {
+        return 'formulário para adicionar uma cidade';
+    }
 }
