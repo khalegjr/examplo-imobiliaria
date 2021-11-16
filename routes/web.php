@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', 'admin/cidades', 302);
 
-Route::get('/cidades', [CidadeController::class, 'index']);
+Route::prefix('admin')->group(function () {
+    Route::prefix('cidades')->group(function () {
+        Route::get('/', [CidadeController::class, 'index']);
+        Route::get('/adicionar', [CidadeController::class, 'create']);
+    });
+});
