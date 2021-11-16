@@ -11,7 +11,22 @@
 </head>
 <body>
     {{-- Menu Topo --}}
-    <nav>Menu Topo</nav>
+    <nav>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo">Best Imóveis</a>
+                <ul class="right">
+                    <li>
+                        <a href="#">Imóveis</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Cidades</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     {{-- Conteúdo Principal --}}
     <main class="container">
