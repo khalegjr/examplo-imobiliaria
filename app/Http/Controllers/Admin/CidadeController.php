@@ -28,6 +28,10 @@ class CidadeController extends Controller
 
         $cidade->save();
 
+        $request
+            ->session()
+            ->flash('sucesso', "Cidade $request->nome incluída com sucesso!");
+
         return redirect()->route('admin.cidades.index');
     }
 }

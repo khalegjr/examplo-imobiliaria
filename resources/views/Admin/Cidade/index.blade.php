@@ -30,5 +30,11 @@
                 <i class="large material-icons">add</i>
             </a>
         </div>
+
+        @if (session('sucesso'))
+            <div>
+                {{ session('sucesso') }}
+            </div>
+        @endif
     </section>
 @endsection
