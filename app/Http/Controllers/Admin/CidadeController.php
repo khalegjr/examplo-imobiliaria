@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CidadeRequest;
 use App\Models\Cidade;
-use Illuminate\Http\Request;
 
 class CidadeController extends Controller
 {
@@ -21,7 +21,7 @@ class CidadeController extends Controller
         return view('Admin.Cidade.form');
     }
 
-    public function store(Request $request)
+    public function store(CidadeRequest $request)
     {
         $cidade = new Cidade();
         $cidade->nome = $request->nome;
