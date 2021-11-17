@@ -18,6 +18,8 @@ class CidadeController extends Controller
 
     public function create()
     {
-        return 'formulário para adicionar uma cidade';
+        return view('Admin.Cidade.form');
+    }
+
     }
 }
