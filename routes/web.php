@@ -33,5 +33,9 @@ Route::prefix('admin')
                     CidadeController::class,
                     'store',
                 ])->name('store');
+                Route::delete('/{id}', [
+                    CidadeController::class,
+                    'destroy',
+                ])->name('destroy');
             });
     });
