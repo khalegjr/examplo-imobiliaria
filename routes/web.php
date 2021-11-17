@@ -29,5 +29,9 @@ Route::prefix('admin')
                     CidadeController::class,
                     'create',
                 ])->name('create');
+                Route::post('/adicionar', [
+                    CidadeController::class,
+                    'store',
+                ])->name('store');
             });
     });
