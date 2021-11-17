@@ -21,5 +21,13 @@ class CidadeController extends Controller
         return view('Admin.Cidade.form');
     }
 
+    public function store(Request $request)
+    {
+        $cidade = new Cidade();
+        $cidade->nome = $request->nome;
+
+        $cidade->save();
+
+        return redirect()->route('admin.cidades.index');
     }
 }
