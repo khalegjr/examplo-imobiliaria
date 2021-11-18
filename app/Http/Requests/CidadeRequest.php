@@ -29,7 +29,7 @@ class CidadeRequest extends FormRequest
                 'required',
                 'min:3',
                 'max:100',
-                'unique:cidades',
+                "unique:cidades,nome,$this->id",
             ],
         ];
     }
