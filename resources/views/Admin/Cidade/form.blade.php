@@ -2,10 +2,15 @@
 
 @section('conteudo-principal')
     <section class="section">
-        <form action="{{ route('admin.cidades.store') }}" method="post">
+        <form action="{{ $action }}" method="post">
             @csrf
+            
+            @isset($cidade)
+                @method('put')
+            @endisset
+
             <div class="input-field">
-                <input type="text" name="nome" id="nome" value="{{ old('nome') }}">
+                <input type="text" name="nome" id="nome" value="{{ old('nome', $cidade->nome ?? '') }}">
                 <label for="nome">Nome</label>
                 @error('nome')
                     <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
