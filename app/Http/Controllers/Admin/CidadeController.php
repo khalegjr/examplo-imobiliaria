@@ -19,7 +19,9 @@ class CidadeController extends Controller
 
     public function create()
     {
-        return view('Admin.Cidade.form');
+        $action = route('admin.cidades.create');
+
+        return view('Admin.Cidade.form', compact('action'));
     }
 
     public function store(CidadeRequest $request)
