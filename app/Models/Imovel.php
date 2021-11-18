@@ -37,4 +37,14 @@ class Imovel extends Model
     /** LEMBRETE
      * O inverso de um relacionamento hasOne é belongsTo
      */
+
+    public function finalidade()
+    {
+        return $this->belongsTo(Finalidade::class);
+    }
+
+    public function tipo()
+    {
+        return $this->belongsTo(Tipo::class);
+    }
 }
