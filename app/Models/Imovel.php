@@ -23,4 +23,18 @@ class Imovel extends Model
          * Também o Eloquent espera que a chave estrangeira aponte para a chave primária da outra tabela. Caso ela aponte para outro campo que não o primário temos que indicar com um terceiro parâmetro: $this->hasOne(Endereco::class, 'chave_estrangeira', 'camṕo_associado');
          */
     }
+
+    /** Aqui é o inverso do relacionamento 1-N com cidades, ou seja, o nome volta a ter importância semântica na convenção.
+     *
+     * Também segue as mesmas convenções do hasOne().
+     */
+    public function cidade()
+    {
+        return $this->belongsTo(Cidade::class);
+        /** belongsTo é quem tem a chave primária */
+    }
+
+    /** LEMBRETE
+     * O inverso de um relacionamento hasOne é belongsTo
+     */
 }
