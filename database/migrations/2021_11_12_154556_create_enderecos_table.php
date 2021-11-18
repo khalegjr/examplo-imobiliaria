@@ -20,7 +20,10 @@ class CreateEnderecosTable extends Migration
             $table->string('complemento', 50)->nullable();
             $table->string('bairro', 50);
             $table->string('cep', 9);
-            $table->foreignId('id_imovel')->constrained('imoveis');
+            $table
+                ->foreignId('imovel_id')
+                ->constrained('imoveis')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

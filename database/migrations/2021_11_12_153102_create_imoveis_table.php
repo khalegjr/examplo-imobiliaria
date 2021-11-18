@@ -22,10 +22,19 @@ class CreateImoveisTable extends Migration
             $table->integer('dormitorios');
             $table->integer('garagens');
             $table->text('descricao')->nullable();
-            $table->float('preco', 2);
-            $table->foreignId('id_cidade')->constrained('cidades');
-            $table->foreignId('id_tipo')->constrained('tipos');
-            $table->foreignId('id_finalidade')->constrained('finalidades');
+            $table->decimal('preco', 12, 2);
+            $table
+                ->foreignId('cidade_id')
+                ->constrained()
+                ->onDelete('cascade');
+            $table
+                ->foreignId('tipo_id')
+                ->constrained()
+                ->onDelete('cascade');
+            $table
+                ->foreignId('finalidade_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
