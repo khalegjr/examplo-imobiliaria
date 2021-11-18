@@ -42,4 +42,24 @@ class CidadeController extends Controller
         $request->session()->flash('sucesso', 'Cidade excluída com sucesso!');
         return redirect()->route('admin.cidades.index');
     }
+
+    public function edit($id)
+    {
+        $cidade = Cidade::findOrFail($id);
+        $action = route('admin.cidades.update', $cidade->id);
+
+        return view('Admin.Cidade.form', compact('cidade', 'action'));
+    }
+
+    public function update(CidadeRequest $request, $id)
+    {
+        $cidade = Cidade::find($id);
+        $cidade->nome = $request->nome;
+        $cidade->save();
+
+        $request
+            ->session()
+            ->flash('sucesso', "Cidade $request->nome alterada com sucesso!");
+        return redirect()->route('admin.cidades.index');
+    }
 }
