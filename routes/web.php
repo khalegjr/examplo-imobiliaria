@@ -37,5 +37,11 @@ Route::prefix('admin')
                     CidadeController::class,
                     'destroy',
                 ])->name('destroy');
+                Route::get('/{id}', [CidadeController::class, 'edit'])->name(
+                    'edit'
+                );
+                Route::put('/{id}', [CidadeController::class, 'update'])->name(
+                    'update'
+                );
             });
     });
