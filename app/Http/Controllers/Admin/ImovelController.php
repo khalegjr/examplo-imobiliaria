@@ -20,7 +20,7 @@ class ImovelController extends Controller
      */
     public function index()
     {
-        $imoveis = Imovel::all();
+        $imoveis = Imovel::with(['cidade', 'endereco'])->get();
 
         return view('Admin.Imovel.index', compact('imoveis'));
     }
