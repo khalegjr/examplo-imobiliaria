@@ -54,6 +54,14 @@ class ImovelController extends Controller
         DB::beginTransaction();
         $imovel = Imovel::create($request->all());
         $imovel->endereco()->create($request->all());
+
+        if ($request->has('proximidades')) {
+            $imovel->proximidades()->sync($request->proximidades);
+            // -> attach: adiciona
+            // -> detach: remove
+            // -> sync: ele adiciona mas faz o detach se já existir
+            // -> syncWithoutDetaching: faz o mesmo que o attach
+        }
         DB::commit();
 
         $request->session()->flash('sucesso', 'Imovel incluido com sucesso!');
