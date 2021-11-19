@@ -14,7 +14,7 @@ class ImovelController extends Controller
      */
     public function index()
     {
-        echo 'lista de imóveis';
+        return view('Admin.Imovel.index');
     }
 
     /**
