@@ -21,7 +21,7 @@
                 <a href="/" class="brand-logo">Best Imóveis</a>
                 <ul class="right">
                     <li>
-                        <a href="#">Imóveis</a>
+                        <a href="{{ route('admin.imoveis.index') }}">Imóveis</a>
                     </li>
 
                     <li>
