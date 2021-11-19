@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Cidade;
 use App\Models\Finalidade;
+use App\Models\Imovel;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ImovelController extends Controller
 {
@@ -47,7 +49,14 @@ class ImovelController extends Controller
      */
     public function store(Request $request)
     {
-        echo 'Salvando os dados';
+        DB::beginTransaction();
+        $imovel = Imovel::create($request->all());
+        $imovel->endereco()->create($request->all());
+        DB::commit();
+
+        $request->session()->flash('sucesso', 'Imovel incluido com sucesso!');
+
+        return redirect()->route('admin.imoveis.index');
     }
 
     /**
