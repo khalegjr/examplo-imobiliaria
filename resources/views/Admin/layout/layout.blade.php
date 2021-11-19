@@ -44,6 +44,11 @@
         @if (session('sucesso'))
             M.toast({html: "{{ session('sucesso') }}"})
         @endif
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
     </script>
 
 </body>
