@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cidade;
 use App\Models\Finalidade;
 use App\Models\Imovel;
+use App\Models\Proximidade;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,10 +35,11 @@ class ImovelController extends Controller
         $cidades = Cidade::all();
         $tipos = Tipo::all();
         $finalidades = Finalidade::all();
+        $proximidades = Proximidade::all();
 
         return view(
             'Admin.Imovel.form',
-            compact('action', 'cidades', 'tipos', 'finalidades')
+            compact('action', 'cidades', 'tipos', 'finalidades', 'proximidades')
         );
     }
 
