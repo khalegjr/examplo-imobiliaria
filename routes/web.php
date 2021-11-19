@@ -48,7 +48,7 @@ Route::prefix('admin')
     });
 
 Route::prefix('admin')
-    ->name('admin')
+    ->name('admin.')
     ->group(function () {
         Route::resource('imoveis', ImovelController::class);
     });
