@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cidade;
+use App\Models\Finalidade;
+use App\Models\Tipo;
 use Illuminate\Http\Request;
 
 class ImovelController extends Controller
@@ -24,7 +27,16 @@ class ImovelController extends Controller
      */
     public function create()
     {
-        //
+        $action = route('admin.imoveis.store');
+
+        $cidades = Cidade::all();
+        $tipos = Tipo::all();
+        $finalidades = Finalidade::all();
+
+        return view(
+            'Admin.Imovel.form',
+            compact('action', 'cidades', 'tipos', 'finalidades')
+        );
     }
 
     /**
@@ -35,7 +47,7 @@ class ImovelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo 'Salvando os dados';
     }
 
     /**
