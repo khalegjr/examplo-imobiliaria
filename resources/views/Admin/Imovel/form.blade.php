@@ -117,6 +117,20 @@
                 </div>
             </div>
 
+            {{-- Proximidades --}}
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name="proximidades[]" id="proximidades" multiple>
+                        <option value="" disabled>Selecione os pontos de interesse nas proximidades</option>
+
+                        @foreach ($proximidades as $proximidade)
+                            <option value="{{ $proximidade->id }}">{{ $proximidade->nome }}</option>
+                        @endforeach
+                    </select>
+                    <label for="proximidades">Pontos de interesse nas proximidades</label>
+                </div>
+            </div>
+
             {{-- Salvar Cancelar --}}
             <div class="right-align">
                 <a href="{{ route('admin.imoveis.index') }}" class="btn-flat waves-effect">Cancelar</a>
