@@ -20,7 +20,17 @@ class ImovelController extends Controller
      */
     public function index()
     {
-        $imoveis = Imovel::with(['cidade', 'endereco'])->get();
+        //$imoveis = Imovel::with(['cidade', 'endereco'])->get();
+        /** Fazendo ordenação a partir de join com uma tabela relacionada, sem usar a relação do model. */
+        $imoveis = Imovel::join(
+            'cidades',
+            'cidades.id',
+            '=',
+            'imoveis.cidade_id'
+        )
+            ->join('enderecos', 'enderecos.id', '=', 'imoveis.id')
+            ->orderBy('cidades.nome', 'asc')
+            ->get();
 
         return view('Admin.Imovel.index', compact('imoveis'));
     }
