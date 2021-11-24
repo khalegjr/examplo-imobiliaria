@@ -12,7 +12,7 @@ class CidadeController extends Controller
     public function index()
     {
         //$cidades = ['Campinas', 'São Paulo', 'Salgado', 'Guará'];
-        $cidades = Cidade::all();
+        $cidades = Cidade::orderBy('nome', 'asc')->get();
 
         return view('Admin.Cidade.index')->with('cidades', $cidades);
     }
