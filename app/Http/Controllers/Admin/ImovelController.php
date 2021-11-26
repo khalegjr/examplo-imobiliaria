@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ImovelRequest;
 use App\Models\Cidade;
 use App\Models\Finalidade;
 use App\Models\Imovel;
@@ -61,7 +62,7 @@ class ImovelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImovelRequest $request)
     {
         DB::beginTransaction();
         $imovel = Imovel::create($request->all());
