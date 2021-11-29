@@ -43,4 +43,36 @@ class ImovelRequest extends FormRequest
             'proximidades' => ['bail', 'nullable', 'array'],
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'titulo' => 'Título',
+            'cidade_id' => 'Cidade',
+            'tipo_id' => 'Tipo de Imóvel',
+            'finalidade_id' => 'Finalidade',
+            'preco' => 'Preço',
+            'dormitorios' => 'Quantidade de Dormitórios',
+            'salas' => 'Quantidade de Salas',
+            'terreno' => 'Terreno em m²',
+            'banheiros' => 'Quantidade de Banheiros',
+            'garagens' => 'Vagas na Garagem',
+            'descricao' => 'Descrição',
+            'rua' => 'Rua',
+            'numero' => 'Número',
+            'complemento' => 'Complemento',
+            'bairro' => 'Bairro',
+            'cep' => 'CEP',
+            'proximidades' => 'Pontos de interesses nas proximidades',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'finalidade_id.required' => 'Favor selecione uma opção',
+            'titulo.min' =>
+                'Favor inserir pelo menos :min caracteres para o :attribute',
+        ];
+    }
 }
