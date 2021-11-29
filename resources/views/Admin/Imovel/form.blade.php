@@ -7,7 +7,7 @@
 
             {{-- Título --}}
             <div class="input-field">
-                <input type="text" name="titulo" id="titulo">
+                <input type="text" name="titulo" id="titulo" value=" {{ old('titulo') }}">
                 <label for="titulo">Título</label>
                 @error('titulo')
                     <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -17,10 +17,12 @@
             {{-- Cidade --}}
             <div class="input-field">
                 <select name="cidade_id" id="cidade_id">
-                    <option value="" disabled selected>Selecione uma cidade</option>
+                    <option disabled selected>Selecione uma cidade</option>
 
                     @foreach ($cidades as $cidade)
-                        <option value="{{ $cidade->id }}">{{ $cidade->nome }}</option>
+                        <option value="{{ $cidade->id }}" {{ old('cidade_id') == $cidade->id ? 'selected' : '' }}>
+                            {{ $cidade->nome }}
+                        </option>
                     @endforeach
                 </select>
                 <label for="cidade_id">Cídade</label>
@@ -32,10 +34,10 @@
             {{-- Tipo --}}
             <div class="input-field">
                 <select name="tipo_id" id="tipo_id">
-                    <option value="" disabled selected>Selecione um tipo de imóvel</option>
+                    <option value="{{ old('tipo_id') }}" disabled selected>Selecione um tipo de imóvel</option>
 
                     @foreach ($tipos as $tipo)
-                        <option value="{{ $tipo->id }}">{{ $tipo->nome }}</option>
+                        <option value="{{ $tipo->id }}" {{ old('tipo_id') == $tipo->id ? 'selected' : '' }}>{{ $tipo->nome }}</option>
                     @endforeach
                 </select>
                 <label for="tipo_id">Tipo de Imóvel</label>
@@ -49,7 +51,7 @@
                 @foreach ($finalidades as $finalidade)
                     <span>
                         <label style="margin-right: 30px">
-                            <input type="radio" name="finalidade_id" id="finalidade_id" class="with-gap" value="{{ $finalidade->id }}" />
+                            <input type="radio" name="finalidade_id" id="finalidade_id" class="with-gap" value="{{ $finalidade->id }}" {{ old('finalidade_id') == $finalidade->id ? 'checked' : '' }} />
                             <span>{{ $finalidade->nome }}</span>
                         </label>
                         
@@ -63,7 +65,7 @@
             {{-- preço dormitórios salas --}}
             <div class="row">
                 <div class="input-field col s4">
-                    <input type="number" name="preco" id="preco" min="0" step="0.50" />
+                    <input type="number" name="preco" id="preco" min="0" step="0.50" value="{{ old('preco') }}" />
                     <label for="preco">Preço</label>
                     @error('preco')
                         <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -71,7 +73,7 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <input type="number" name="dormitorios" id="dormitorios" min="0" />
+                    <input type="number" name="dormitorios" id="dormitorios" min="0" value="{{ old('dormitorios') }}" />
                     <label for="dormitorios">Quantidades de Dormitórios</label>
                     @error('dormitorios')
                         <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -79,7 +81,7 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <input type="number" name="salas" id="salas" min="0" />
+                    <input type="number" name="salas" id="salas" min="0" value="{{ old('salas') }}" />
                     <label for="salas">Quantidade de Salas</label>
                     @error('salas')
                         <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -90,7 +92,7 @@
             {{-- terreno banherios garagens --}}
             <div class="row">
                 <div class="input-field col s4">
-                    <input type="number" name="terreno" id="terreno" min="0" step="0.50" />
+                    <input type="number" name="terreno" id="terreno" min="0" step="0.50" value="{{ old('terreno') }}" />
                     <label for="terreno">Terreno em m²</label>
                     @error('terreno')
                         <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -98,7 +100,7 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <input type="number" name="banheiros" id="banheiros" min="0" />
+                    <input type="number" name="banheiros" id="banheiros" min="0" value="{{ old('banheiros') }}" />
                     <label for="banheiros">Quantidades de Banheiros</label>
                     @error('banheiros')
                         <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -106,7 +108,7 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <input type="number" name="garagens" id="garagens" min="0" />
+                    <input type="number" name="garagens" id="garagens" min="0" value="{{ old('garagens') }}" />
                     <label for="garagens">Vagas na Garagem</label>
                     @error('garagens')
                         <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -116,7 +118,9 @@
 
             {{-- Descricao --}}
             <div class="input-field">
-                <textarea name="descricao" id="descricao" class="materialize-textarea"></textarea>
+                <textarea name="descricao" id="descricao" class="materialize-textarea">
+                    {{ old('descricao') }}
+                </textarea>
                 <label for="descricao">Descrição</label>
                 @error('descricao')
                     <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -126,7 +130,7 @@
             {{-- Endereço --}}
             <div class="row">
                 <div class="input-field col s6">
-                    <input type="text" name="rua" id="rua" />
+                    <input type="text" name="rua" id="rua" value="{{ old('rua') }}" />
                     <label for="rua">Rua</label>
                     @error('rua')
                         <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -134,7 +138,7 @@
                 </div>
 
                 <div class="input-field col s2">
-                    <input type="text" name="numero" id="numero" />
+                    <input type="text" name="numero" id="numero" value="{{ old('numero') }}" />
                     <label for="numero">Número</label>
                     @error('numero')
                         <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -142,7 +146,7 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <input type="text" name="complemento" id="complemento" />
+                    <input type="text" name="complemento" id="complemento" value="{{ old('complemento') }}" />
                     <label for="complemento">Complemento</label>
                     @error('complemento')
                         <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -150,7 +154,7 @@
                 </div>
 
                 <div class="input-field col s8">
-                    <input type="text" name="bairro" id="bairro" />
+                    <input type="text" name="bairro" id="bairro" value="{{ old('bairro') }}" />
                     <label for="bairro">Bairro</label>
                     @error('bairro')
                         <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -158,7 +162,7 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <input type="text" name="cep" id="cep" maxlength="9" />
+                    <input type="text" name="cep" id="cep" maxlength="9" value="{{ old('cep') }}" />
                     <label for="cep">CEP</label>
                     @error('cep')
                         <span class="red-text text-accent-3"><small>{{ $message }}</small></span>
@@ -173,7 +177,13 @@
                         <option value="" disabled>Selecione os pontos de interesse nas proximidades</option>
 
                         @foreach ($proximidades as $proximidade)
-                            <option value="{{ $proximidade->id }}">{{ $proximidade->nome }}</option>
+                            <option value="{{ $proximidade->id }}"
+                                @if (old('proximidades'))
+                                    {{ in_array($proximidade->id, old('proximidades')) ? 'selected' : '' }}
+                                @endif
+                                 >
+                                {{ $proximidade->nome }}
+                            </option>
                         @endforeach
                     </select>
                     <label for="proximidades">Pontos de interesse nas proximidades</label>
