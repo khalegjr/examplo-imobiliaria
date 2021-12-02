@@ -20,6 +20,12 @@
                         <td>{{ $imovel->endereco->bairro }}</td>
                         <td>{{ $imovel->titulo }}</td>
                         <td class="right-align">
+                            {{-- Fotos --}}
+                            <a href="{{ route('admin.imoveis.fotos.index', $imovel->id) }}" title="fotos">
+                                <span><i class="material-icons green-text text-lighten-1">insert_photo</i></span>
+                            </a>
+
+                            {{-- Visualizar --}}
                             <a href="{{ route('admin.imoveis.show', $imovel->id) }}" title="visualizar">
                                 <span><i class="material-icons indigo-text text-darken-2">remove_red_eye</i></span>
                             </a>
