@@ -101,7 +101,32 @@ class ImovelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $imovel = Imovel::with([
+            'cidade',
+            'endereco',
+            'finalidade',
+            'tipo',
+            'proximidades',
+        ])->find($id);
+
+        $cidades = Cidade::all();
+        $tipos = Tipo::all();
+        $finalidades = Finalidade::all();
+        $proximidades = Proximidade::all();
+
+        $action = route('admin.imoveis.update', $imovel->id);
+
+        return view(
+            'Admin.Imovel.form',
+            compact(
+                'imovel',
+                'action',
+                'cidades',
+                'tipos',
+                'finalidades',
+                'proximidades'
+            )
+        );
     }
 
     /**
@@ -111,9 +136,21 @@ class ImovelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ImovelRequest $request, $id)
     {
-        //
+        $imovel = Imovel::findOrFail($id);
+
+        DB::beginTransaction();
+        $imovel->update($request->all());
+        $imovel->endereco->update($request->all());
+
+        if ($request->has('proximidades')) {
+            $imovel->proximidades()->sync($request->proximidades);
+        }
+        DB::Commit();
+
+        $request->session()->flash('sucesso', 'Imóvel atualizado com sucesso!');
+        return redirect()->route('admin.imoveis.edit', $imovel->id);
     }
 
     /**
