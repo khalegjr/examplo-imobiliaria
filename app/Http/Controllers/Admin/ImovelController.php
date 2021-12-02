@@ -90,7 +90,15 @@ class ImovelController extends Controller
      */
     public function show($id)
     {
-        //
+        $imovel = Imovel::with([
+            'cidade',
+            'endereco',
+            'finalidade',
+            'tipo',
+            'proximidades',
+        ])->find($id);
+
+        return view('Admin.Imovel.show', compact('imovel'));
     }
 
     /**
