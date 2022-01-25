@@ -43,7 +43,7 @@ class ImovelController extends Controller
             $imoveis->where('titulo', 'like', "%$titulo%");
         }
 
-        $imoveis = $imoveis->get();
+        $imoveis = $imoveis->paginate(env('PAGINACAO'))->withQueryString();
 
         $cidades = Cidade::orderBy('nome')->get();
 
