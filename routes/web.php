@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CidadeController;
 use App\Http\Controllers\Admin\FotoController;
 use App\Http\Controllers\Admin\ImovelController;
+use App\Http\Controllers\Site\CidadeController as SiteCidadeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,3 +59,5 @@ Route::prefix('admin')
             'update',
         ]);
     });
+
+Route::resource('/', SiteCidadeController::class)->only('index');
