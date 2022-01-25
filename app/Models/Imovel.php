@@ -96,4 +96,9 @@ class Imovel extends Model
 
         /** No caso de uma tabela intermediária ter mais campos do que somente as chaves estrangeiras podemos trata-la ainda como uma pivo, sem criar um modelo para ela, mas tem que procurar na documentação como fazer. Ou podemos criar um modelo para ela e fazer dois relacionamentos 1-N, mais simples. Uma terceira forma é criar um modelo específico do tipo pivô, é uma forma mais avançada que deve procurar na documentação. */
     }
+
+    public function fotos()
+    {
+        return $this->hasMany(Foto::class);
+    }
 }

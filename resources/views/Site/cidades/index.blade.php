@@ -6,7 +6,7 @@
 <section class="section lighten-4 center">
     <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
         @foreach ($cidades as $cidade)
-            <a href="#">
+            <a href="{{ route('cidades.imoveis.index', $cidade->id) }}">
                 <div class="card-panel" style="width: 200px; height: 100%;">
                     <i class="material-icons medium green-text text-lighten-3">
                         room
