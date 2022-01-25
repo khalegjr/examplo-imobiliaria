@@ -19,6 +19,7 @@
                     <p class="card-title">
                         {{ $imovel->titulo }}
                     </p>
+                    
                     <p>
                         Finalidade: <strong>{{ $imovel->finalidade->nome }}</strong>
                     </p>
@@ -26,6 +27,12 @@
                     <p>
                         Preço: <strong>R$: {{ $imovel->preco }}</strong>
                     </p>
+                </div>
+
+                <div class="card-action">
+                    <a href="{{ route('cidades.imoveis.show', [$cidade->id, $imovel->id]) }}" class="green-text">
+                        Ver detalhes
+                    </a>
                 </div>
             </div>
         @empty
